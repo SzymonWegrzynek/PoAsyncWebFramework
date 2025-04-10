@@ -1,0 +1,17 @@
+[package]
+name = "po-async-web-framework"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = "4.2.1"                                    # async web server 
+env_logger = "0.10"                                    # logging 
+dotenv = "0.15"                                        # env file loader 
+tokio = { version = "1.39.3", features = ["full"] }    # async runtime  
+clap = "4.5.35"                                        # CLI parser 
+mockall = "0.13.1"                                     # testing mocks 
+hound = "3.5.1"                                        # WAV file writer 
+rodio = "0.20.1"                                       # audio playback  
+thiserror = "2.0.12"                                   # custom errors
+googleapis-tonic-google-cloud-texttospeech-v1 = "0.25" # Google TTS client 
+tonic = { version = "0.11", features = ["tls"] }       # gRPC client/server
