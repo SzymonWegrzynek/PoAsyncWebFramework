@@ -29,6 +29,7 @@ async fn main() -> std::io::Result<()> {
             .app_data(web::Data::new(app_state.clone()))
             .wrap(Logger::default())
             .configure(routes::routes::healthcheck)
+            .configure(routes::routes::speech)
     })
     .bind((server_ip, server_port))?
     .run()
