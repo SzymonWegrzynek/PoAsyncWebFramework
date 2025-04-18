@@ -20,13 +20,11 @@ impl SpeechHandler {
             }
         };
 
-        let audio = match Tts::synthesize(text).await {
-            Ok(audio) => audio,
+        match Tts::synthesize(text, 1.0).await {
+            Ok(_) => HttpResponse::Ok().finish(),
             Err(_) => {
-                return HttpResponse::InternalServerError().body("Text-to-speech error");
+                return HttpResponse::InternalServerError().body("Tts error");
             }
-        };
-
-        HttpResponse::Ok().content_type("audio/mpeg").body(audio)
+        }
     }
 }
