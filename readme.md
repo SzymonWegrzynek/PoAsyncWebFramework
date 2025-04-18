@@ -54,10 +54,6 @@ Aplikacja webowa powinna posiadać co najmniej następujące endpointy:
 1. Jak przechować na serwerze parametry dla generowanego tekstu.
 2. Jak prawidłowo zaimplementować architekturę trójwarstwową zarówno po stronie serwera, jak i klienta.
 
-## Wymagania techniczne
-
-- **Biblioteka po stronie serwera:** `pyttsx3`.
-
 ## Kryteria oceniania
 
 1. **Klient:**
@@ -70,8 +66,3 @@ Aplikacja webowa powinna posiadać co najmniej następujące endpointy:
    - Użycie frameworka asynchronicznego - **2 pkt**.
    - Architektura trójwarstwowa i wstrzykiwanie zależności - **4 pkt**.
    - Testy dla serwera - **4 pkt**.
-
-## Linki
-
-- https://pypi.org/project/pyttsx3/?authuser=0
-- https://docs.python.org/3/library/argparse.html?authuser=0

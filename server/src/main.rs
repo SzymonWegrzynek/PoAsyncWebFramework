@@ -1,6 +1,9 @@
 use actix_web::{middleware::Logger, web, App, HttpServer};
 use dotenv::dotenv;
 use std::env;
+use std::sync::{Arc, Mutex};
+
+use crate::state::AppState;
 
 mod handlers;
 mod models;
@@ -15,7 +18,9 @@ async fn main() -> std::io::Result<()> {
 
     env_logger::init();
 
-    let app_state = state::AppState {};
+    let app_state = Arc::new(Mutex::new(AppState {
+        lang: "pol".to_string(),
+    }));
 
     let server_ip = env::var("SERVER_IP").expect("SERVER_IP must be set");
 
@@ -30,6 +35,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(Logger::default())
             .configure(routes::routes::healthcheck)
             .configure(routes::routes::speech)
+            .configure(routes::routes::parameter)
     })
     .bind((server_ip, server_port))?
     .run()
