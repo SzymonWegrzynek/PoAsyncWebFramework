@@ -11,26 +11,31 @@ impl Tts {
                 language: Languages::Polish,
                 tld: "com",
             },
+
             "eng" => GTTSClient {
                 volume: 1.0,
                 language: Languages::English,
                 tld: "com",
             },
+
             "ita" => GTTSClient {
                 volume: 1.0,
                 language: Languages::Italian,
                 tld: "com",
             },
+
             "ger" => GTTSClient {
                 volume: 1.0,
                 language: Languages::German,
                 tld: "com",
             },
+
             "spa" => GTTSClient {
                 volume: 1.0,
                 language: Languages::Spanish,
                 tld: "com",
             },
+
             _ => GTTSClient {
                 volume: 1.0,
                 language: Languages::Polish,
