@@ -2,7 +2,7 @@ use actix_web::{web, HttpResponse};
 use std::fs::read_to_string;
 use std::sync::{Arc, Mutex};
 
-use crate::{models::speech::SpeechRequest, modules::tts::Tts, state::AppState};
+use crate::{models::speech::SpeechRequest, modules::TextToSpeech, state::AppState};
 
 pub struct SpeechHandler;
 
@@ -20,8 +20,9 @@ impl SpeechHandler {
         };
 
         let state = app_state.lock().unwrap();
+        let tts = state.tts_client.clone();
 
-        match Tts::synthesize(text, &state.lang).await {
+        match tts.speak(text, &state.lang).await {
             Ok(_) => HttpResponse::Ok().finish(),
             Err(_) => {
                 return HttpResponse::InternalServerError().body("Tts error");

@@ -1,10 +1,12 @@
 use std::error::Error;
 use tts_rust::{languages::Languages, tts::GTTSClient};
 
-pub struct Tts;
+use super::TextToSpeech;
 
-impl Tts {
-    pub async fn synthesize(text: String, language: &str) -> Result<(), Box<dyn Error>> {
+pub struct TextToSpeechClient;
+
+impl TextToSpeech for TextToSpeechClient {
+    async fn speak(&self, text: String, language: &str) -> Result<(), Box<dyn Error>> {
         let narrator: GTTSClient = match language {
             "pol" => GTTSClient {
                 volume: 1.0,
@@ -43,7 +45,7 @@ impl Tts {
             },
         };
 
-        let _ = narrator.save_to_file(&text, "/mnt/c/Users/super/Downloads/audio.mp3");
+        narrator.save_to_file(&text, "/mnt/c/Users/super/Downloads/audio.mp3")?;
 
         Ok(())
     }
