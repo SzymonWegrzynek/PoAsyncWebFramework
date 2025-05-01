@@ -1656,6 +1656,7 @@ dependencies = [
  "dotenv",
  "env_logger 0.10.2",
  "serde",
+ "serde_json",
  "tts_rust",
 ]
 
