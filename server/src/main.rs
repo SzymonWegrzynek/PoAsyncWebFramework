@@ -24,8 +24,6 @@ async fn main() -> std::io::Result<()> {
         tts_client: Arc::new(TextToSpeechClient),
     }));
 
-    let ttsc: Arc<TextToSpeechClient> = Arc::new(TextToSpeechClient);
-
     let server_ip = env::var("SERVER_IP").expect("SERVER_IP must be set");
 
     let server_port = env::var("SERVER_PORT")
@@ -36,7 +34,6 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(web::Data::new(app_state.clone()))
-            .app_data(web::Data::new(ttsc.clone()))
             .wrap(Logger::default())
             .configure(routes::routes::healthcheck)
             .configure(routes::routes::speech)

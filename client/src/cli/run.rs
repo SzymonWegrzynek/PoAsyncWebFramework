@@ -11,7 +11,7 @@ impl Cli {
         loop {
             let mut input = String::new();
 
-            let _ = io::stdin().read_line(&mut input);
+            io::stdin().read_line(&mut input)?;
 
             let input = input.trim();
 
